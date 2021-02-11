@@ -1,6 +1,6 @@
 # deSEC Webhook for cert-manager
 
-A [1][cert-manager] webhook to solve an ACME DNS01 challenge using the deSEC API
+A [cert-manager][1] webhook to solve an ACME DNS01 challenge using the deSEC API
 
 ## Install
 
