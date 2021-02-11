@@ -1,6 +1,6 @@
 # deSEC Webhook for cert-manager
 
-A cert-manager webhook to solve an ACME DNS01 challenge using the deSEC API
+A [1][cert-manager] webhook to solve an ACME DNS01 challenge using the deSEC API
 
 ## Install
 
@@ -16,3 +16,5 @@ All DNS providers **must** run the DNS01 provider conformance testing suite,
 else they will have undetermined behaviour when used with cert-manager.
 
 TODO
+
+[1]: https://github.com/jetstack/cert-manager
