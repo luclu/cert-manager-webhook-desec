@@ -12,7 +12,7 @@ import (
 	"k8s.io/client-go/rest"
 	"k8s.io/klog"
 
-	"github.com/jetstack/cert-manager-webhook-example/desec"
+	"github.com/jetstack/cert-manager-webhook-desec/desec"
 	"github.com/jetstack/cert-manager/pkg/acme/webhook/apis/acme/v1alpha1"
 	"github.com/jetstack/cert-manager/pkg/acme/webhook/cmd"
 	cmmeta "github.com/jetstack/cert-manager/pkg/apis/meta/v1"
