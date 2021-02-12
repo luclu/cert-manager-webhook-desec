@@ -1,6 +1,6 @@
 # deSEC Webhook for cert-manager
 
-A [cert-manager][1] webhook to solve an ACME DNS01 challenge using the deSEC API
+A [cert-manager][1] webhook to solve an ACME DNS01 challenge using the [deSEC][2] API
 
 ## Install
 
@@ -18,3 +18,4 @@ else they will have undetermined behaviour when used with cert-manager.
 TODO
 
 [1]: https://github.com/jetstack/cert-manager
+[2]: https://desec.io/
