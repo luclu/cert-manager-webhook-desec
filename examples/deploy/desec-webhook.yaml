@@ -3,6 +3,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: desec-webhook
+  namespace: cert-manager
   labels:
     app: desec-webhook
 ---
@@ -67,7 +68,7 @@ rules:
   - apiGroups: [""]
     resources:
       - 'secrets'
-    resourceNames: 
+    resourceNames:
     verbs:
       - 'get'
       - 'watch'
@@ -115,6 +116,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: desec-webhook
+  namespace: cert-manager
   labels:
     app: desec-webhook
 spec:
@@ -131,10 +133,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: desec-webhook
+  namespace: cert-manager
   labels:
     app: desec-webhook
 spec:
-  replicas: 
+  replicas:
   selector:
     matchLabels:
       app: desec-webhook
@@ -201,7 +204,7 @@ apiVersion: cert-manager.io/v1alpha3
 kind: Certificate
 metadata:
   name: desec-webhook-ca
-  namespace: "default"
+#  namespace: default
   labels:
     app: desec-webhook
 spec:
@@ -217,7 +220,7 @@ apiVersion: cert-manager.io/v1alpha3
 kind: Certificate
 metadata:
   name: desec-webhook-webhook-tls
-  namespace: "default"
+  namespace: desec-webhook
   labels:
     app: desec-webhook
 spec:
@@ -236,7 +239,7 @@ apiVersion: cert-manager.io/v1alpha3
 kind: Issuer
 metadata:
   name: desec-webhook-selfsign
-  namespace: "default"
+  namespace: cert-manager
   labels:
     app: desec-webhook
 spec:
@@ -247,7 +250,7 @@ apiVersion: cert-manager.io/v1alpha3
 kind: Issuer
 metadata:
   name: desec-webhook-ca
-  namespace: "default"
+  namespace: cert-manager
   labels:
     app: desec-webhook
 spec:
