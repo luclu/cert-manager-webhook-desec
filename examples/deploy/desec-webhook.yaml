@@ -38,7 +38,7 @@ subjects:
   - apiGroup: ""
     kind: ServiceAccount
     name: desec-webhook
-    namespace: default
+    namespace: cert-manager
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -93,7 +93,7 @@ subjects:
   - apiGroup: ""
     kind: ServiceAccount
     name: desec-webhook
-    namespace: default
+    namespace: cert-manager
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -110,7 +110,7 @@ subjects:
   - apiGroup: ""
     kind: ServiceAccount
     name: desec-webhook
-    namespace: default
+    namespace: cert-manager
 ---
 apiVersion: v1
 kind: Service
@@ -189,14 +189,14 @@ metadata:
   labels:
     app: desec-webhook
   annotations:
-    cert-manager.io/inject-ca-from: "default/desec-webhook-webhook-tls"
+    cert-manager.io/inject-ca-from: "cert-manager/desec-webhook-webhook-tls"
 spec:
   group: acme.ukmetrics.ca
   groupPriorityMinimum: 1000
   versionPriority: 15
   service:
     name: desec-webhook
-    namespace: default
+    namespace: cert-manager
   version: v1alpha1
 ---
 # Generate a CA Certificate used to sign certificates for the webhook
@@ -230,8 +230,8 @@ spec:
     name: desec-webhook-ca
   dnsNames:
   - desec-webhook
-  - desec-webhook.default
-  - desec-webhook.default.svc
+  - desec-webhook.cert-manager
+  - desec-webhook.cert-manager.svc
 ---
 # Create a selfsigned Issuer, in order to create a root CA certificate for
 # signing webhook serving certificates
